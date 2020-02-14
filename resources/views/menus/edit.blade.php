@@ -2,18 +2,19 @@
 @section('content')
 <div class='container'>
 	<div class='row'>
-		<div class='col-12'>
-		<div class='card'>
-		<div class='card-header'>{{ __('Activa menu para la semana') }}</div>
-		<div class='card-body'>
-		{{ Form::model($menu, ['action' => 'MenusController@store']) }}
+		<div class='col-md-8 offset-md-2'>
+			<div class='card'>
+			<div class='card-header'>{{ __('Editar el menu de la semana') }}</div>
+			<div class='card-body'>
+			{{ Form::model($menu, ['action' => ['MenusController@update', $menu->id]]) }}
+			@method('PATCH')
 			<div class='form-group row'>
 				{{ Form::label(
 						'start_date', 
 						'Cuando empieza el menu', 
 						['class' => 'col-md-4 col-form-label text-md-right']) }}
 				<div class='col-md-6'>
-					{{ Form::date('start_date', ( old('start_date') ), 
+					{{ Form::date('start_date', (old('start_date') ?? $menu->start_date), 
 							[
 								'class' => "form-control ".($errors->has('start_date')?'is-invalid':''),
 							]) }}
@@ -28,7 +29,7 @@
 				{{ form::label('start_date', 'cuando termina el menu',
 					['class' => 'col-md-4 col-form-label text-md-right']) }}
 				<div class='col-md-6'>
-					{{ form::date('end_date', ( old('end_date') ) ), 
+					{{ form::date('end_date', ( old('end_date') ?? $menu->end_date), 
 							[
 								'class' => "form-control ".($errors->has('end_date')?'is-invalid':''),
 							]) }}
@@ -52,7 +53,7 @@
 					</div>	
 				</div>
 				<div class='col-md-6 d-flex align-items-center'>
-					{{ form::checkbox("items[{$item->id}]", $item->id, false,
+					{{ form::checkbox("items[{$item->id}]", $item->id, $menu->items->contains($item->id),
 					[
 						'class' => "m-0 form-check-input " . ($errors->has('items')?'is-invalid':'')
 					]) }}
@@ -64,12 +65,12 @@
 				</div>
 			</div>
 			@endforeach
-			<div class='col-md-6 offset-md-4'>
-				{{ Form::submit('Guardar nuevo menu', ['class' => 'btn btn-primary']) }}
+			<div class='col-md-6 offset-md-4 text-left'>
+				{{ Form::submit('Guardar menu', ['class' => 'btn btn-primary']) }}
 			</div>
-		{{ Form::close() }}
-		</div>
-		</div>
+			{{ Form::close() }}
+			</div>
+			</div>
 		</div>
 	</div>
 </div>

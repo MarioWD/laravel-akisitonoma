@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'AkisitoNoma') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -64,6 +64,10 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+									<a class='dropdown-item' href='{{ route('home') }}'>Casa</a>
+									<a class='dropdown-item' href='{{ route('items.index') }}'>Comidas</a>
+									<a class='dropdown-item' href='{{ route('menus.index') }}'>Menus</a>
+									<a class='dropdown-item' href=''>Ordenes</a>
                                 </div>
                             </li>
                         @endguest
@@ -72,54 +76,9 @@
             </div>
         </nav>
         <main class="py-4">
-			<div class='container-fluid'>
+			<div class='container'>
 				<div class='row'>
-					<div class='col-md-4 admin-dashboard'>
-						<div id='accordion'>
-							<div class='card'>
-								<div class='card-header'>
-									<a href='{{ route('items.index') }}' class='text-dark text-decoration-none'>
-										<div class='d-flex align-items-center'>
-											<h3><i class='fa fa-cutlery'></i></h3>
-											<span class='ml-2'>Comidas</span>
-										</div>
-									</a>
-								</div>
-							</div>
-							<div class='card'>
-								<div class='card-header'>
-									<a href='{{ route('items.create') }}' class='text-dark text-decoration-none'>
-										<div class='d-flex align-items-center'>
-											<h3><i class='fa fa-cutlery'></i></h3>
-											<span class='ml-2'>Agregar Comida</span>
-										</div>
-									</a>
-
-								</div>
-							</div>
-							<div class='card'>
-								<div class='card-header'>
-									<a href='{{ route('menus.index') }}' class='text-dark text-decoration-none'>
-										<div class='d-flex align-items-center'>
-											<h3><i class='fa fa-cutlery'></i></h3>
-											<span class='ml-2'>Menus</span>
-										</div>
-									</a>
-								</div>
-							</div>
-							<div class='card'>
-								<div class='card-header'>
-									<a href='{{ route('menus.create') }}' class='text-dark text-decoration-none'>
-										<div class='d-flex align-items-center'>
-											<h3><i class='fa fa-cutlery'></i></h3>
-											<span class='ml-2'>Agregar Menu</span>
-										</div>
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class='col-md-8'>@yield('content')</div>	
+					<div class='col-12 text-center mb-5'>@yield('content')</div>	
 				</div>
 			</div>	
         </main>

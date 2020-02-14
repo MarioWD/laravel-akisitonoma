@@ -6,11 +6,6 @@
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between">
 					<div>{{ __('Editar la informacion de una comida') }}</div>
-					<form action="{{ route('items.destroy', $item->id) }}" method='POST'>
-						@csrf
-						@method('DELETE')
-						<button type='submit' class='btn btn-danger'>Borrar</button>
-					</form>
 				</div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('items.update', $item->id) }}" enctype='multipart/form-data'>
