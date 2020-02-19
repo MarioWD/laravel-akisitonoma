@@ -1,0 +1,119 @@
+@import 'variables';
+html, body {
+	color: #636b6f;
+   	font-family: 'Nunito', sans-serif;
+   	font-weight: 200;
+	font-size: 16px;
+}
+
+.font-color-chocoorange {
+color: $chocolateorange;
+}
+.font-color-beige {
+color: $beige;
+}
+.font-color-saddlebrown {
+color: $saddlebrown;
+}
+.font-color-saddlered {
+color: $saddlered;
+}
+.font-color-olivegreen {
+color: $darkolivegreen;
+}
+.view__welcome {
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	padding-bottom: 100px;
+
+	&::before {
+		content: "";
+		background-color: black;
+		opacity: 0.3;
+		position: fixed;
+		right: 0;
+		left: 0;
+		top: 0;
+		bottom: 0;
+	}
+
+	.links > a {
+		color: white;
+		padding: 0 25px;
+		font-size: 13px;
+		font-weight: 600;
+		letter-spacing: .1rem;
+		text-decoration: none;
+		text-transform: uppercase;
+
+	}
+
+	header.row__resto {
+		.navbar {
+			.navbar-brand {
+				margin-bottom: 0;
+			}
+			.navbar-right {
+				border-radius: 50%;
+				background-color: $beige;
+			}
+		}
+		.intro {
+			padding: 100px 0;
+			font-size: 25px;
+			h1 {
+				font-family: $font-family-cursive; 
+				color: $chocolateorange;
+				font-weight: bolder;
+				font-size: 3.25em;
+			}
+			p {
+				font-family: $font-family-cursive;
+				color: $beige;
+				letter-spacing: 0.2rem;
+			}
+		}
+	}
+
+	main.row__menu {
+			> div {
+				background-color: $beige;
+				min-height: 500px;
+				border-radius: 40px;
+				padding: 30px 0 40px;
+				.row__menu-header {
+				   text-align: center;
+					h1 {
+						font-family: $font-family-cursive;
+						color: $darkolivegreen;
+					   	font-size: 3em;
+					}
+					p {
+					   	font-weight: bold;
+					}
+				}
+				 .row__item {
+					margin: 0 0 10px;
+					 .col__img {
+						 img {
+						 	border-radius: 50%;
+							border: 10px solid $darkolivegreen;
+						 }
+					 }
+					 .col__info {
+						 blockquote {
+							 h1 {
+								 font-family: $font-family-cursive;
+							 }
+							 p {
+								font-weight: bolder;
+							 }
+						 }
+					 }
+				 }
+			}
+		}
+}
+

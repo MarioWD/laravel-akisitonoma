@@ -13,7 +13,7 @@
 						'Cuando empieza el menu', 
 						['class' => 'col-md-4 col-form-label text-md-right']) }}
 				<div class='col-md-6'>
-					{{ Form::date('start_date', ( old('start_date') ), 
+					{{ Form::date('start_date', old('start_date'), 
 							[
 								'class' => "form-control ".($errors->has('start_date')?'is-invalid':''),
 							]) }}
@@ -28,7 +28,7 @@
 				{{ form::label('start_date', 'cuando termina el menu',
 					['class' => 'col-md-4 col-form-label text-md-right']) }}
 				<div class='col-md-6'>
-					{{ form::date('end_date', ( old('end_date') ) ), 
+					{{ form::date('end_date', old('end_date'), 
 							[
 								'class' => "form-control ".($errors->has('end_date')?'is-invalid':''),
 							]) }}

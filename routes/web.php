@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () { return view('welcome'); });
+Route::get('/', 'WelcomeController@index')->name('welcome');
 
 Auth::routes();
 
@@ -19,3 +19,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/items', 'ItemsController');
 Route::resource('/menus', 'MenusController');
+Route::resource('/orders', 'OrdersController');
+Route::post('/api/order', 'OrdersController@sessionOrderPut')->name('api.order');

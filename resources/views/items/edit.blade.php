@@ -57,7 +57,7 @@
                             <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Precio de la comida') }}</label>
 
                             <div class="col-md-6">
-                                <input id="price" type="number" step='0.50' class="form-control @error('description') is-invalid @enderror" name="price" autocomplete="price" value='{{ old('price') ?? $item->price}}'>
+                                <input id="price" type="number" step='0.01' class="form-control @error('description') is-invalid @enderror" name="price" autocomplete="price" value='{{ old('price') ?? $item->price}}'>
                                 @error('price')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
