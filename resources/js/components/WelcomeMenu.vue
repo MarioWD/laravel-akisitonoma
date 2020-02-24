@@ -6,14 +6,14 @@
 			<span class='navbar-right p-2'><i class='fa fa-shopping-cart font-color-saddlered'></i> <strong>{{ order.total }}</strong></span>
 		</div>
 		<div class='col-12 text-center intro'>
-			<h1><span class='font-color-beige'>Come!</span> Akisito No'ma</h1>
-			<p>Comida autenticamente Peruana, directo a su hogar!</p>
+			<h1><span class='font-color-beige'>A Comerrr!</span> Akisito No'ma</h1>
+			<p>Comida autenticamente Peruana y Mexicana, directo a su hogar!</p>
 		</div>
 	</header>
 	<main class='row row__menu'>
 		<div class='col-sm-10 offset-sm-1 col-lg-6 offset-lg-3 col-12 col-md-8 offset-md-2' v-if="menu">
 			<div class='container-fluid'>
-				<div class='row row__menu-header mb-5'>
+				<div class='row row__menu-header mb-3'>
 					<div class='col-12'>
 						<h1 class='mb-2'>El menu de la semana!</h1>
 						<p class='mb-0'>Apretando el boton agregara la comida a su orden</p>
@@ -107,9 +107,9 @@ ${{ item.price }} X {{ order.items[item.id] }} = ${{ (order.items[item.id]*item.
 							<div class='form-group row'>
 								<div class='col-md-4 text-md-right'>Total</div>
 								<div class='col-md-6'>
-									${{ (order.sum*1).toFixed(2) }}<input type='hidden' class='form-control' :class="{'is-invalid': this.errors.items}"/>
-									<span class='invalid-feedback' role='alert' v-if='this.errors.items'>
-										<strong>{{ (this.errors.items?this.errors.items[0]:"") }}</strong>
+									${{ (order.sum*1).toFixed(2) }}<input type='hidden' class='form-control' :class="{'is-invalid': this.errors.item_id}"/>
+									<span class='invalid-feedback' role='alert' v-if='this.errors.item_id'>
+										<strong>{{ (this.errors.item_id?this.errors.item_id[0]:"") }}</strong>
 									</span>
 								</div>
 							</div>

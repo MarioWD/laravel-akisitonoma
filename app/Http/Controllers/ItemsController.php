@@ -25,7 +25,9 @@ class ItemsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() { return view('items.create'); }
+    public function create() { 
+		return view('items.create'); 
+	}
 
     /**
      * Store a newly created resource in storage.

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Menu;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+		$now = date('Y-m-d', strtotime('today'));	
+		$menu = Menu::where('start_date', '<=', $now)
+			->where('end_date', '>=', $now)
+			->first();
+		$totals = ['item_quantities' => []];
+		foreach ($menu->orders as $order) {
+			foreach ($order->items as $item) {
+				if (!isset($totals['item_quantities'][$item->id])) {
+					$totals['item_quantities'][$item->id] = 0;
+				}
+				$totals['item_quantities'][$item->id] += $item->pivot->quantity;
+			}
+		}
+        return view('home', compact('menu', 'totals'));
     }
 }

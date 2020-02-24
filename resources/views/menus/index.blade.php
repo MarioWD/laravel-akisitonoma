@@ -1,11 +1,15 @@
 @extends('layouts.app')
 @section('content')
-@foreach($menus as $x => $menu)
+<h1 class='mb-3'>Los Menus creados hasta el dia</h1>	
+<div class='mb-4'>
+	<a href="{{ route('menus.create') }}" class='btn btn-primary'>Agregar Menu</a>
+</div>
+@if(!$menus->isEmpty())
 <div class='jumbotron'>
-	<div class='container'>
-		<div class='row d-flex'>
-		<div class='col-md-4'>
-			<div id='menuCarousel-{{ $x }}' class='carousel slide' data-ride='carousel'>
+	@foreach($menus as $x => $menu)
+	<div class='row d-flex align-items-center mb-3'>
+		<div class='col-md-6'>
+			<div id='menuCarousel-{{ $x }}' class='carousel slide menu-carousel' data-ride='carousel'>
 				<ol class='carousel-indicators'>
 				@foreach($menu->items as $i => $item)
 					<li data-target='#menuCarousel-{{ $x }}' data-slide='{{ $i }}' class='{{ ($i == 0?'active':'') }}'></li>
@@ -32,15 +36,15 @@
 				  </a>
 			</div>
 		</div>
-		<div class='col-md-8 text-left'>
-			<h5><strong>Empieza:</strong> {{ $menu->start_date }}</h5>
-			<h5><strong>Termina:</strong> {{ $menu->end_date }}</h5>
+		<div class='col-md-6 pt-2'>
+			<h5><strong>Empieza:</strong> {{ date('l F j, Y', strtotime($menu->start_date)) }}</h5>
+			<h5><strong>Termina:</strong> {{ date('l F j, Y', strtotime($menu->end_date)) }}</h5>
 			<h5><strong>Comidas:</strong> {{ $menu->items->count() }}</h5>
 			<hr class='my-4'>
 			<a href='{{ route('menus.show', $menu->id) }}' class='btn btn-primary'>Ver Menu</a>
 		</div>
-		</div>
 	</div>
+	@endforeach
 </div>
-@endforeach
+@endif
 @endsection

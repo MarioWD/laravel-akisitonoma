@@ -11,4 +11,7 @@ class Menu extends Model
 	public function items () {
 		return $this->belongsToMany(Item::class);
 	}
+	public function orders () {
+		return $this->hasMany(Order::class);
+	}
 }

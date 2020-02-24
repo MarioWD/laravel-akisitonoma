@@ -20,6 +20,8 @@ class CreateOrdersTable extends Migration
 			$table->string('email');
 			$table->string('name');
 			$table->decimal('total');
+			$table->bigInteger('menu_id')->unsigned();
+			$table->foreign('menu_id')->references('id')->on('menus');
             $table->timestamps();
         });
     }

@@ -65,7 +65,7 @@ body {
 }
 
 .view__welcome header.row__resto .intro {
-  padding: 100px 0;
+  padding: 50px 0 100px;
   font-size: 25px;
 }
 

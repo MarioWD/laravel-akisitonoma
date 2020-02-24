@@ -67,7 +67,7 @@
 									<a class='dropdown-item' href='{{ route('home') }}'>Casa</a>
 									<a class='dropdown-item' href='{{ route('items.index') }}'>Comidas</a>
 									<a class='dropdown-item' href='{{ route('menus.index') }}'>Menus</a>
-									<a class='dropdown-item' href=''>Ordenes</a>
+									<a class='dropdown-item' href='{{ route('orders.index') }}'>Ordenes</a>
                                 </div>
                             </li>
                         @endguest
@@ -76,11 +76,7 @@
             </div>
         </nav>
         <main class="py-4">
-			<div class='container'>
-				<div class='row'>
-					<div class='col-12 text-center mb-5'>@yield('content')</div>	
-				</div>
-			</div>	
+			<div class='container'>@yield('content')</div>	
         </main>
     </div>
 </body>

@@ -37525,7 +37525,7 @@ var render = function() {
                 "div",
                 { staticClass: "container-fluid" },
                 [
-                  _c("div", { staticClass: "row row__menu-header mb-5" }, [
+                  _c("div", { staticClass: "row row__menu-header mb-3" }, [
                     _c("div", { staticClass: "col-12" }, [
                       _c("h1", { staticClass: "mb-2" }, [
                         _vm._v("El menu de la semana!")
@@ -38052,11 +38052,11 @@ var render = function() {
                             ),
                             _c("input", {
                               staticClass: "form-control",
-                              class: { "is-invalid": this.errors.items },
+                              class: { "is-invalid": this.errors.item_id },
                               attrs: { type: "hidden" }
                             }),
                             _vm._v(" "),
-                            this.errors.items
+                            this.errors.item_id
                               ? _c(
                                   "span",
                                   {
@@ -38067,8 +38067,8 @@ var render = function() {
                                     _c("strong", [
                                       _vm._v(
                                         _vm._s(
-                                          this.errors.items
-                                            ? this.errors.items[0]
+                                          this.errors.item_id
+                                            ? this.errors.item_id[0]
                                             : ""
                                         )
                                       )
@@ -38136,11 +38136,13 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-12 text-center intro" }, [
       _c("h1", [
-        _c("span", { staticClass: "font-color-beige" }, [_vm._v("Come!")]),
+        _c("span", { staticClass: "font-color-beige" }, [_vm._v("A Comerrr!")]),
         _vm._v(" Akisito No'ma")
       ]),
       _vm._v(" "),
-      _c("p", [_vm._v("Comida autenticamente Peruana, directo a su hogar!")])
+      _c("p", [
+        _vm._v("Comida autenticamente Peruana y Mexicana, directo a su hogar!")
+      ])
     ])
   },
   function() {
