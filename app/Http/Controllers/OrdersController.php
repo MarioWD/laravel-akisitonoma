@@ -36,7 +36,8 @@ class OrdersController extends Controller
 		unset($data['item_id']);
 	 	$order = Order::create($data);
 		$order->items()->sync($item_orders);
-		return Mail::to($order->email)->send(new OrderMailer($order));
+		Mail::to($order->email)->from('no_reply@akisitonoma.com', 'Akisitonoma')->send(new OrderMailer($order))
+		return $order;
 	}
     /**
      * Display a listing of the resource.
@@ -90,7 +91,7 @@ class OrdersController extends Controller
 		unset($data['item_id']);
 		$order = Order::create($data);
 		$order->items()->sync($item_ids);
-		Mail::to($order->email)->send(new OrderMailer($order));
+		Mail::to($order->email)->from('no_reply@akisitonoma.com', 'Akisitonoma')->send(new OrderMailer($order))
 		return redirect(route('orders.show', $order->id));
         //
     }
@@ -135,7 +136,7 @@ class OrdersController extends Controller
 		unset($data['item_id']);
 		$order->update($data);
 		$order->items()->sync($item_ids);
-		Mail::to($order->email)->send(new OrderMailer($order));
+		Mail::to($order->email)->from('no_reply@akisitonoma.com', 'Akisitonoma')->send(new OrderMailer($order))
 		return redirect(route('orders.show', $order->id));
     }
 
