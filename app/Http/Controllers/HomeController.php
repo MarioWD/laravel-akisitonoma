@@ -28,13 +28,15 @@ class HomeController extends Controller
 		$menu = Menu::where('start_date', '<=', $now)
 			->where('end_date', '>=', $now)
 			->first();
-		$totals = ['item_quantities' => []];
-		foreach ($menu->orders as $order) {
-			foreach ($order->items as $item) {
-				if (!isset($totals['item_quantities'][$item->id])) {
-					$totals['item_quantities'][$item->id] = 0;
+		if ($menu) {
+			$totals = ['item_quantities' => []];
+			foreach ($menu->orders as $order) {
+				foreach ($order->items as $item) {
+					if (!isset($totals['item_quantities'][$item->id])) {
+						$totals['item_quantities'][$item->id] = 0;
+					}
+					$totals['item_quantities'][$item->id] += $item->pivot->quantity;
 				}
-				$totals['item_quantities'][$item->id] += $item->pivot->quantity;
 			}
 		}
         return view('home', compact('menu', 'totals'));
