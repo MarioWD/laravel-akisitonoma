@@ -40,7 +40,7 @@
 							<div class='mt-3' v-if='order.start'>
 								<button v-if="!order.items[item.id]" class='btn btn-primary' @click="addItem($event, item)">Agregar/Add</button>
 								<div v-if="order.items[item.id]" class='d-flex' :class="{'justify-content-end': ((i+1)%2==0)}">
-									<input class='form-control' :style="{width: '80px'}" min='0' v-model="order.items[item.id]" type='number' @change="changeAmount($event, item)"/>
+									<input class='form-control' :style="{width: '80px'}" min='0' v-model="order.items[item.id]" type='tel' v-model:lazy="order.items['item.id']" @change="changeAmount($event, item)" />
 									<button class='btn btn-danger ml-3' @click="removeItem(item)"><i class='fa fa-times'></i></button>
 								</div>
 							</div>
@@ -160,6 +160,7 @@ export default {
 			 this.calculateOrderSum();
 		},
 		 changeAmount (event, item) {
+			 console.log(event.keyCode);
 			 this.order.items[item.id] = event.target.value ? parseInt(event.target.value) : 0;
 			 this.order.total = parseInt(this.order.items.reduce((a, b) => a+b, 0));
 			 this.calculateOrderSum();

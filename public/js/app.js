@@ -2071,6 +2071,7 @@ __webpack_require__.r(__webpack_exports__);
       this.calculateOrderSum();
     },
     changeAmount: function changeAmount(event, item) {
+      console.log(event.keyCode);
       this.order.items[item.id] = event.target.value ? parseInt(event.target.value) : 0;
       this.order.total = parseInt(this.order.items.reduce(function (a, b) {
         return a + b;
@@ -37662,16 +37663,24 @@ var render = function() {
                                                     _vm.order.items[item.id],
                                                   expression:
                                                     "order.items[item.id]"
+                                                },
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model:lazy",
+                                                  value:
+                                                    _vm.order.items["item.id"],
+                                                  expression:
+                                                    "order.items['item.id']",
+                                                  arg: "lazy"
                                                 }
                                               ],
                                               staticClass: "form-control",
                                               style: { width: "80px" },
-                                              attrs: {
-                                                min: "0",
-                                                type: "number"
-                                              },
+                                              attrs: { min: "0", type: "tel" },
                                               domProps: {
-                                                value: _vm.order.items[item.id]
+                                                value: _vm.order.items[item.id],
+                                                value:
+                                                  _vm.order.items["item.id"]
                                               },
                                               on: {
                                                 change: function($event) {
@@ -37680,16 +37689,32 @@ var render = function() {
                                                     item
                                                   )
                                                 },
-                                                input: function($event) {
-                                                  if ($event.target.composing) {
-                                                    return
+                                                input: [
+                                                  function($event) {
+                                                    if (
+                                                      $event.target.composing
+                                                    ) {
+                                                      return
+                                                    }
+                                                    _vm.$set(
+                                                      _vm.order.items,
+                                                      "item.id",
+                                                      $event.target.value
+                                                    )
+                                                  },
+                                                  function($event) {
+                                                    if (
+                                                      $event.target.composing
+                                                    ) {
+                                                      return
+                                                    }
+                                                    _vm.$set(
+                                                      _vm.order.items,
+                                                      item.id,
+                                                      $event.target.value
+                                                    )
                                                   }
-                                                  _vm.$set(
-                                                    _vm.order.items,
-                                                    item.id,
-                                                    $event.target.value
-                                                  )
-                                                }
+                                                ]
                                               }
                                             }),
                                             _vm._v(" "),

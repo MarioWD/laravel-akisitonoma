@@ -9,7 +9,7 @@
 	@foreach ($menu->items as $item)
 	<tr>
 		<th>{{ $item->name }}</th>
-		<td>{{ $totals['item_quantities'][$item->id] }}</td>
+		<td>{{ $totals['item_quantities'][$item->id] ?? 0}}</td>
 	</tr>
 	@endforeach
 	</tbody>
