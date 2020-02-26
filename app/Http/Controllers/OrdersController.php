@@ -19,7 +19,7 @@ class OrdersController extends Controller
 			'total' => ['required', 'numeric'],
 			'address' => ['required'],
 			'item_id' => ['required', 'array'],
-			'menu_id' => ['required', 'unique:menus', 'numeric'],
+			'menu_id' => ['required', 'numeric'],
 		];
 	}
 	public function sessionOrderPut (Request $request) {
