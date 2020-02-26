@@ -2,7 +2,7 @@
 <div class='container-fluid'>
 	<header class='row row__resto'>
 		<div class='navbar col-12 sticky-top d-flex align-items-center'>
-			<span class='navbar-brand'><img src='/storage/uploads/assets/chili.svg' height='50px'/></span>
+			<span class='navbar-brand'><img src='/assets/chili.svg' height='50px'/></span>
 			<span class='navbar-right p-2'><i class='fa fa-shopping-cart font-color-saddlered'></i> <strong>{{ order.total }}</strong></span>
 		</div>
 		<div class='col-12 text-center intro'>

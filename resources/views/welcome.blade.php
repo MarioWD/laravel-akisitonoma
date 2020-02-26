@@ -22,7 +22,7 @@
 
 		<link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
     </head>
-    <body class='view__welcome' style='background-image: url({{ asset("/storage/uploads/assets/chefbg2.jpg") }})'>
+    <body class='view__welcome' style='background-image: url({{ asset("/assets/chefbg2.jpg") }})'>
 		<div id='app'>
 			<welcome-page-menu :order="{{ json_encode($order) }}" :menu="{{ json_encode($menu) }}" :items="{{ json_encode($menu->items ?? null) }}" />
 		</div>
