@@ -3,7 +3,7 @@
 	<header class='row row__resto'>
 		<div class='navbar col-12 sticky-top d-flex align-items-center'>
 			<span class='navbar-brand'><img src='/assets/chili.svg' height='50px'/></span>
-			<span class='navbar-right p-2'><i class='fa fa-shopping-cart font-color-saddlered'></i> <strong>{{ order.total }}</strong></span>
+			<a class='navbar-right p-2 text-decoration-none text-light' href='#' data-target='#order-submit-modal' data-toggle='modal'><i class='fa fa-shopping-cart'></i> <strong>{{ order.total }}</strong></a>
 		</div>
 		<div class='col-12 text-center intro'>
 			<h1><span class='font-color-beige'>A Comerrr!</span> Akisito No'ma</h1>
@@ -19,9 +19,8 @@
 						<p class='mb-0'>Apretando el boton agregara la comida a su orden</p>
 						<p>Clicking the button will add the item to your order</p>
 						<hr/>
-						<div>
+						<div style='min-height:50px;'>
 							<button v-if='!order.start' class='btn btn-primary' @click='startForm'>Empezar/Start</button>
-							<button v-if='order.start' class='btn btn-primary' data-target="#order-submit-modal" data-toggle='modal' type='button'>Termina Orden/Submit Order</button>
 						</div>
 					</div>
 				</div>
@@ -46,6 +45,9 @@
 							</div>
 						</blockquote>
 					</div>
+				</div>
+				<div class='text-center mt-3'>
+					<button v-if='order.start' class='btn btn-success' data-target="#order-submit-modal" data-toggle='modal' type='button'>Termina Orden/Submit Order</button>
 				</div>
 			</div>
 		</div>
@@ -114,7 +116,7 @@ ${{ item.price }} X {{ order.items[item.id] }} = ${{ (order.items[item.id]*item.
 								</div>
 							</div>
 							<div class='row'>
-								<div class='col-md-6 offset-md-4 text-md-left'>
+								<div class='col-12 text-center'>
 									<button type='button' class='btn btn-primary' @click="toggleModal">Continuar/Continue</button>
 									<button type='submit' class='btn btn-success'>Terminar/Finish</button>
 								</div>
