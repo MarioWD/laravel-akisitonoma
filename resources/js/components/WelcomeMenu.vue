@@ -39,8 +39,9 @@
 							<div class='mt-3' v-if='order.start'>
 								<button v-if="!order.items[item.id]" class='btn btn-primary' @click="addItem($event, item)">Agregar/Add</button>
 								<div v-if="order.items[item.id]" class='d-flex' :class="{'justify-content-end': ((i+1)%2==0)}">
-									<input class='form-control' :style="{width: '80px'}" min='0' v-model="order.items[item.id]" type='tel' v-model:lazy="order.items['item.id']" @change="changeAmount($event, item)" />
-									<button class='btn btn-danger ml-3' @click="removeItem(item)"><i class='fa fa-times'></i></button>
+									<input class='form-control' readonly :style="{width: '80px'}" min='0' step='1' type='number' v-model:lazy="order.items[item.id]" @change="changeAmount($event, item)" />
+									<button class='btn btn-success ml-3' @click="addOne(item)"><i class='fa fa-plus'></i></button>
+									<button class='btn btn-danger ml-3' @click="removeOne(item)"><i class='fa fa-minus'></i></button>
 								</div>
 							</div>
 						</blockquote>
@@ -156,13 +157,7 @@ export default {
 			this.order.sum = this.order.sum? this.order.sum : 0;
 			this.order.finish = false;
 		},
-		removeItem (item) {
-			 this.order.items[item.id] = 0;
-			 this.order.total = parseInt(this.order.items.reduce((a, b) => a+b, 0));
-			 this.calculateOrderSum();
-		},
 		 changeAmount (event, item) {
-			 console.log(event.keyCode);
 			 this.order.items[item.id] = event.target.value ? parseInt(event.target.value) : 0;
 			 this.order.total = parseInt(this.order.items.reduce((a, b) => a+b, 0));
 			 this.calculateOrderSum();
@@ -175,6 +170,16 @@ export default {
 				 this.order.sum += (amount ? (amount*price) : 0.00);
 			 }
 		 },
+		 addOne (item) {
+			this.order.items[item.id]++;
+			this.order.total++;
+		 	this.calculateOrderSum();
+		 },
+		removeOne (item) {
+			this.order.items[item.id]--;
+			this.order.total--;
+		 	this.calculateOrderSum();
+		},
 		addItem (event, item) {
 			this.order.items[item.id] = 1;
 			this.order.total++;
