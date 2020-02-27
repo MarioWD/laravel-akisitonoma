@@ -32,6 +32,7 @@
 					<p class=''><strong>Para:</strong><br>{{ $order->name }}</p>
 					<p class=''><strong>Direccion:</strong><br><a class='btn btn-primary' href='http://maps.google.com/?q={{ $order->address }}' target='_blank'>{{ $order->address }}</a></p>
 					<p><strong>Telefono:</strong><br><a class='btn btn-primary' href='tel:{{ $order->phone }}' target='_blank'>{{ $order->phone }}</a></p>
+					<p><strong>Email:</strong><br><a class='btn btn-primary' href='mailto:{{ $order->email }}' target='_blank'>{{ $order->email }}</a></p>
 					<table class='table'>
 						<tbody>
 						@foreach ($order->items as $item)
