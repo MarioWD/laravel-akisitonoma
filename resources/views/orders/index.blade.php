@@ -4,6 +4,7 @@
 	<div class='col-12 mb-3'>
 		<h1>Orders In the System</h1>
 		<a href='{{ route('orders.create') }}' class='btn btn-primary'>Crear Orden</a>
+		<div class='mt-4 d-flex justify-content-center'>{{ $orders->links() }}</div>
 	</div>
 	<div class='accordion col-12' id='order-accordion'>
 		@foreach($orders as $order)
@@ -36,5 +37,8 @@
 		</div>
 		@endforeach
 	</div>
+</div>
+<div class='mt-4 d-flex justify-content-center'>
+{{ $orders->links() }}
 </div>
 @endsection

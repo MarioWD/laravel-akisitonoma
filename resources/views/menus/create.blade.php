@@ -42,24 +42,22 @@
 		@foreach ($items as $item)
 		<div class='form-group row'>
 			<div class='col-md-4'>
-				<div class='row d-flex align-items-center'>
-					<div class='col-6'>
-						<img src='{{ "/storage/{$item->image}" }}' class='w-100' />
-					</div>
-					{{ form::label("items[{$item->id}]", $item->name,
-						['class' => 'col-6 col-form-label text-md-right']) }}
-				</div>	
+					<img src='{{ "/storage/{$item->image}" }}' class='w-100' />
 			</div>
 			<div class='col-md-6 d-flex align-items-center'>
+				<div class='form-check'>
 				{{ form::checkbox("items[{$item->id}]", $item->id, false,
 				[
-					'class' => "m-0 form-check-input " . ($errors->has('items')?'is-invalid':'')
+					'class' => "form-check-input " . ($errors->has('items')?'is-invalid':'')
 				]) }}
+
+				{{ form::label("items[{$item->id}]", $item->name,
+					['class' => 'form-check-label text-md-right']) }}
+
 				@error("items")
-					<span class="invalid-feedback ml-3" role="alert">
-						<strong>{{ $message }}</strong>
-					</span>
+				<div class='invalid-feedback' role="alert"><strong>{{ $message }}</strong></div>
 				@enderror
+				</div>
 			</div>
 		</div>
 		@endforeach

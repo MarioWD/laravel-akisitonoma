@@ -1,5 +1,10 @@
 @extends('layouts.app')
 @section('content')
+@if (!$menu)
+<div class='alert alert-danger' role='alert'>
+	No hay menu activo que se puede usar para crear una orden, para crear un menu haz clic <a href='{{ route('menus.create') }}'>aqui</a>
+</div>
+@endif
 <div class='row'>
 	<div class='col-md-8 offset-md-2'>
 		<div class='card'>
@@ -42,6 +47,7 @@
 					@enderror
 					</div>
 				</div>
+				@if ($menu) 
 				@foreach( $menu->items as $i => $item )
 					<div class='form-group row'>
 					{{ Form::label("items[$item->id]", $item->name, ['class'=>"col-md-4 col-form-label text-md-right"]) }}
@@ -58,6 +64,7 @@
 				@endforeach
 				{{ Form::hidden('menu_id', $menu->id) }}
 				<div class='col-md-6 offset-md-4 text-left'>{{ Form::submit('Guardar La Orden', ['class' => 'btn btn-primary']) }}</div>
+				@endif
 				{{ Form::close() }}
 			</div>
 		</div>

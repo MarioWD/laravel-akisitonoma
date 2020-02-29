@@ -15,7 +15,7 @@
 		<div class='row'>
 		@foreach($menu->items as $item)
 		<div class='col-md-4'>
-			<a href='{{ route('items.show', $item->id) }}' class='text-decoration-none'>
+			<a href='{{ route('items.show', $item->id) }}' class='text-decoration-none text-dark'>
 			<div class='card card-body text-left'>
 				<img src='/storage/{{ $item->image }}' class='w-100 mb-3'/>
 				<figcaption><strong>{{ $item->name }}</strong> - ${{ $item->price }}</figcaption>
