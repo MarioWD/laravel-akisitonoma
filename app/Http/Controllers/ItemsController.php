@@ -89,13 +89,18 @@ class ItemsController extends Controller
 		$data = $request->validate([
 			'name' => ['required'],
 			'description' => '',
-			'image' => ['required', 'image'],
+			'image' => ['image'],
 			'price' => ['required'],
 		]);
-		$image_path = $request->image->store('uploads', 'public');
-		$image = Image::make(public_path("storage/{$image_path}"))->fit(1000,1000);
-		$image->save();
-		$data['image'] = $image_path;
+		if ($request->image) {
+			$image_path = $request->image->store('uploads', 'public');
+			$image = Image::make(public_path("storage/{$image_path}"))->fit(1000,1000);
+			$image->save();
+			$data['image'] = $image_path;
+		}
+		else {
+			unset($data['image']);
+		}
 		$item->update($data);
 		return redirect(route('items.index'));
     }

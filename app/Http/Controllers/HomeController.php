@@ -28,8 +28,8 @@ class HomeController extends Controller
 		$menu = Menu::where('start_date', '<=', $now)
 			->where('end_date', '>=', $now)
 			->first();
+		$totals = ['item_quantities' => []];
 		if ($menu) {
-			$totals = ['item_quantities' => []];
 			foreach ($menu->orders as $order) {
 				foreach ($order->items as $item) {
 					if (!isset($totals['item_quantities'][$item->id])) {
