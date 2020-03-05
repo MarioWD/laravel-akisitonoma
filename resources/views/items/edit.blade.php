@@ -29,7 +29,7 @@
 					<div class="form-group row">
 						<label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Descripcion de la comida') }}</label>
 						<div class="col-md-6">
-							<input id="description" type="text" class="form-control" name="description" value="{{ old('description') ?? $item->description }}" autocomplete="description">
+							<textarea id="description" type="text" class="form-control" name="description">{{ old('description') ?? $item->description }}</textarea>
 							@error('description')
 								<span class="invalid-feedback" role="alert">
 									<strong>{{ $message }}</strong>

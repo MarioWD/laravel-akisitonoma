@@ -8,11 +8,12 @@
 		<div class='col-12 text-center intro'>
 			<h1><span class='font-color-beige'>A Comerrr!</span> Akisito No'ma</h1>
 			<p>Comida autenticamente Peruana y Mexicana, directo a su hogar!</p>
+			<a class='btn btn-orange btn-lg' href='#menu-order' v-smooth-scroll><strong>Ordena!</strong></a>
 		</div>
 	</header>
 	<main class='row row__menu'>
 		<div class='col-sm-10 offset-sm-1 col-lg-6 offset-lg-3 col-12 col-md-8 offset-md-2' v-if="menu">
-			<div class='container-fluid'>
+			<div class='container-fluid' id='menu-order'>
 				<div class='row row__menu-header mb-3'>
 					<div class='col-12'>
 						<h1 class='mb-2'>El menu de la semana!</h1>
@@ -20,7 +21,7 @@
 						<p>Clicking the button will add the item to your order</p>
 						<hr/>
 						<div style='min-height:50px;'>
-							<button v-if='!order.start' class='btn btn-primary' @click='startForm'>Empezar/Start</button>
+							<button v-if='!order.start' class='btn btn-olive' @click='startForm'>Empezar/Start</button>
 						</div>
 					</div>
 				</div>
@@ -37,7 +38,7 @@
 							</h1>
 							<p class='mb-0' v-if="item.description">{{ item.description }}</p>
 							<div class='mt-3' v-if='order.start'>
-								<button v-if="!order.items[item.id]" class='btn btn-primary' @click="addItem($event, item)">Agregar/Add</button>
+								<button v-if="!order.items[item.id]" class='btn btn-orange' @click="addItem($event, item)">Agregar/Add</button>
 								<div v-if="order.items[item.id]" class='d-flex' :class="{'justify-content-end': ((i+1)%2==0)}">
 									<input class='form-control' readonly :style="{width: '80px'}" min='0' step='1' type='number' v-model:lazy="order.items[item.id]" @change="changeAmount($event, item)" />
 									<button class='btn btn-success ml-3' @click="addOne(item)"><i class='fa fa-plus'></i></button>
@@ -48,11 +49,12 @@
 					</div>
 				</div>
 				<div class='text-center mt-3'>
-					<button v-if='order.start' class='btn btn-success' data-target="#order-submit-modal" data-toggle='modal' type='button'>Termina Orden/Submit Order</button>
+					<button v-if='order.start' class='btn btn-olive' data-target="#order-submit-modal" data-toggle='modal' type='button'>Termina Orden/Submit Order</button>
 				</div>
 			</div>
 		</div>
 	</main>
+    <loading :active.sync='isFinishing' :is-full-page='true'></loading>
 	<div v-if="order.start" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id='order-submit-modal'>
 	  	<div class="modal-dialog modal-lg">
 			<div class="modal-content p-md-5">
@@ -101,6 +103,17 @@
 									</span>
 								</div>
 							</div>
+
+							<div class='form-group row'>
+								<label for='notes' class='col-md-4 col-form-label text-md-right'>Notas Para Tu Orden</label>
+								<div class='col-md-6'>
+									<textarea class='form-control' type='tel' v-model="order.notes" id='notes' :class="{'is-invalid': this.errors.notes}" @change='addOrderProperty($event)'></textarea>
+									<span class='invalid-feedback' role='alert' v-if='this.errors.notes'>
+										<strong>{{ (this.errors.notes?this.errors.notes[0]:"") }}</strong>
+									</span>
+								</div>
+							</div>
+
 							<div class='form-group row' v-for='(item, y) in items' v-if="order.items[item.id] > 0">
 								<div class='col-md-4 text-md-right'>{{ item.name }}</div>
 								<div class='col-md-6'>
@@ -119,7 +132,7 @@ ${{ item.price }} X {{ order.items[item.id] }} = ${{ (order.items[item.id]*item.
 							<div class='row'>
 								<div class='col-12 text-center'>
 									<button type='button' class='btn btn-primary' @click="toggleModal">Continuar/Continue</button>
-									<button type='submit' class='btn btn-success'>Terminar/Finish</button>
+									<button type='submit' class='btn btn-success' :disabled="isFinishing">Terminar/Finish</button>
 								</div>
 							</div>
 						</div>
@@ -132,14 +145,23 @@ ${{ item.price }} X {{ order.items[item.id] }} = ${{ (order.items[item.id]*item.
 </template>
 
 <script>
+import vueSmoothScroll from 'vue2-smooth-scroll'
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/vue-loading.css'
+
+Vue.use(vueSmoothScroll)
+Vue.use(Loading)
+
 export default {
 	name: 'WelcomeMenu',
 	props: ['menu', 'items', 'order'],
+    components: { Loading, },
 	data () {
 		return {
 			itemList: this.items,
 		  	menuInfo: this.menu,
 		  	orderInfo: this.order,
+		  	isFinishing: false,
 			errors: {},
 		};
 	},
@@ -187,8 +209,10 @@ export default {
 		},
 		finishOrder (event) {
 			event.preventDefault();
+            this.isFinishing = true;
 			axios.post("/api/order", this.order)
 				.then(response => {
+                    this.isFinishing = false;
 					this.toggleModal();
 					this.order.name = "";
 					this.order.email = "";
@@ -203,6 +227,7 @@ export default {
 					alert("Tu Orden a sido confirmada cheque su email! / Your order has been confirmed check your email!");
 				})
 				.catch(error => {
+                    this.isFinishing = false;
 					this.errors = error.response.data.errors;
 				});
 		},

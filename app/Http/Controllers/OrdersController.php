@@ -20,6 +20,7 @@ class OrdersController extends Controller
 			'address' => ['required'],
 			'item_id' => ['required', 'array'],
 			'menu_id' => ['required', 'numeric'],
+            'notes' => '',
 		];
 	}
 	public function sessionOrderPut (Request $request) {
@@ -36,7 +37,7 @@ class OrdersController extends Controller
 		unset($data['item_id']);
 	 	$order = Order::create($data);
 		$order->items()->sync($item_orders);
-		Mail::to($order->email)->send(new OrderMailer($order));
+		//Mail::to($order->email)->send(new OrderMailer($order));
 		return $order;
 	}
     /**

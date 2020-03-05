@@ -24,6 +24,7 @@ class WelcomeController extends Controller
 					"items" => [],
 					"menu_id" => $menu?$menu->id:0,
 					"start" => false,
+					"notes" => "",
 				]);
 		return view('welcome', compact('menu', 'order'));
 	}

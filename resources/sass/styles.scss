@@ -12,3 +12,21 @@
 		z-index: 1;
 	}
 }
+.btn.btn-orange {
+	color: #FFF;
+	background-color: $chocolateorange;
+	border-color: $chocolateorange;
+	&:hover {
+		background-color: $chocolateorange-dark;
+		border-color: $chocolateorange-dark;
+	}
+}
+.btn.btn-olive {
+	color: #FFF;
+	background-color: $darkolivegreen;
+	border-color: $darkolivegreen;
+	&:hover {
+		background-color: $darkolivegreen-dark;
+		border-color: $darkolivegreen-dark;
+	}
+}
