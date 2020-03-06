@@ -98,10 +98,6 @@ body {
   font-weight: bold;
 }
 
-.view__welcome main.row__menu > div .row__item {
-  margin: 0 0 10px;
-}
-
 .view__welcome main.row__menu > div .row__item .col__img img {
   border-radius: 50%;
   border: 10px solid #668033;

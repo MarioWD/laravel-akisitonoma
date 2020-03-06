@@ -26,9 +26,9 @@
 					</div>
 				</div>
 				<div v-for="(item, i) in items" :key="i" 
-				class='row row__item align-items-center'
+				class='row row__item align-items-center mb-5'
 				:class="{'flex-row-reverse':((i+1)%2==0),'flex-row':!((i+1)%2==0)}">
-					<div class='col-md-4 col__img'>
+					<div class='col-md-4 col__img mb-4'>
 						<img :src="`/storage/${item.image}`" class='w-100'/>
 					</div>
 					<div class='col-md-8 col__info' :class="{'text-md-right':((i+1)%2==0)}">
@@ -39,7 +39,7 @@
 							<p class='mb-0' v-if="item.description">{{ item.description }}</p>
 							<div class='mt-3' v-if='order.start'>
 								<button v-if="!order.items[item.id]" class='btn btn-orange' @click="addItem($event, item)">Agregar/Add</button>
-								<div v-if="order.items[item.id]" class='d-flex' :class="{'justify-content-end': ((i+1)%2==0)}">
+								<div v-if="order.items[item.id]" class='d-flex' :class="{'justify-content-md-end': ((i+1)%2==0)}">
 									<input class='form-control' readonly :style="{width: '80px'}" min='0' step='1' type='number' v-model:lazy="order.items[item.id]" @change="changeAmount($event, item)" />
 									<button class='btn btn-success ml-3' @click="addOne(item)"><i class='fa fa-plus'></i></button>
 									<button class='btn btn-danger ml-3' @click="removeOne(item)"><i class='fa fa-minus'></i></button>

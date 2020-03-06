@@ -38253,14 +38253,14 @@ var render = function() {
                         "div",
                         {
                           key: i,
-                          staticClass: "row row__item align-items-center",
+                          staticClass: "row row__item align-items-center mb-5",
                           class: {
                             "flex-row-reverse": (i + 1) % 2 == 0,
                             "flex-row": !((i + 1) % 2 == 0)
                           }
                         },
                         [
-                          _c("div", { staticClass: "col-md-4 col__img" }, [
+                          _c("div", { staticClass: "col-md-4 col__img mb-4" }, [
                             _c("img", {
                               staticClass: "w-100",
                               attrs: { src: "/storage/" + item.image }
@@ -38324,7 +38324,7 @@ var render = function() {
                                             {
                                               staticClass: "d-flex",
                                               class: {
-                                                "justify-content-end":
+                                                "justify-content-md-end":
                                                   (i + 1) % 2 == 0
                                               }
                                             },
