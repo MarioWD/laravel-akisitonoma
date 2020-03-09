@@ -2060,6 +2060,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2147,7 +2160,7 @@ Vue.use(vue_loading_overlay__WEBPACK_IMPORTED_MODULE_1___default.a);
 
         _this.errors = {};
         _this.order.start = false;
-        alert("Tu Orden a sido confirmada cheque su email! / Your order has been confirmed check your email!");
+        alert("Tu Orden ha sido confirmada cheque su email! / Your order has been confirmed check your email!");
       })["catch"](function (error) {
         _this.isFinishing = false;
         _this.errors = error.response.data.errors;
@@ -38174,7 +38187,7 @@ var render = function() {
           ]
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "col-12 text-center intro" }, [
+        _c("div", { staticClass: "col-12 text-center intro mt-5" }, [
           _vm._m(1),
           _vm._v(" "),
           _c("p", [
@@ -38198,12 +38211,14 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("main", { staticClass: "row row__menu" }, [
+        _vm._m(2),
+        _vm._v(" "),
         _vm.menu
           ? _c(
               "div",
               {
                 staticClass:
-                  "col-sm-10 offset-sm-1 col-lg-6 offset-lg-3 col-12 col-md-8 offset-md-2"
+                  "row__board col-sm-10 offset-sm-1 col-lg-6 offset-lg-3 col-12 col-md-8 offset-md-2"
               },
               [
                 _c(
@@ -38216,13 +38231,7 @@ var render = function() {
                     _c("div", { staticClass: "row row__menu-header mb-3" }, [
                       _c("div", { staticClass: "col-12" }, [
                         _c("h1", { staticClass: "mb-2" }, [
-                          _vm._v("El menu de la semana!")
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "mb-0" }, [
-                          _vm._v(
-                            "Apretando el boton agregara la comida a su orden"
-                          )
+                          _vm._v("The Menu for the week!")
                         ]),
                         _vm._v(" "),
                         _c("p", [
@@ -38241,7 +38250,7 @@ var render = function() {
                                   staticClass: "btn btn-olive",
                                   on: { click: _vm.startForm }
                                 },
-                                [_vm._v("Empezar/Start")]
+                                [_vm._v("Start")]
                               )
                             : _vm._e()
                         ])
@@ -38253,14 +38262,15 @@ var render = function() {
                         "div",
                         {
                           key: i,
-                          staticClass: "row row__item align-items-center mb-5",
+                          staticClass:
+                            "row row__item align-items-center mb-5 mb-md-0",
                           class: {
                             "flex-row-reverse": (i + 1) % 2 == 0,
                             "flex-row": !((i + 1) % 2 == 0)
                           }
                         },
                         [
-                          _c("div", { staticClass: "col-md-4 col__img mb-4" }, [
+                          _c("div", { staticClass: "col-md-4 col__img mb-3" }, [
                             _c("img", {
                               staticClass: "w-100",
                               attrs: { src: "/storage/" + item.image }
@@ -38287,7 +38297,14 @@ var render = function() {
                                     _c(
                                       "span",
                                       { staticClass: "font-color-saddlered" },
-                                      [_vm._v("$" + _vm._s(item.price))]
+                                      [
+                                        _vm._v(
+                                          "$" +
+                                            _vm._s(
+                                              parseFloat(item.price).toFixed(2)
+                                            )
+                                        )
+                                      ]
                                     )
                                   ]
                                 ),
@@ -38314,7 +38331,7 @@ var render = function() {
                                                 }
                                               }
                                             },
-                                            [_vm._v("Agregar/Add")]
+                                            [_vm._v("Add")]
                                           )
                                         : _vm._e(),
                                       _vm._v(" "),
@@ -38434,7 +38451,7 @@ var render = function() {
                                 type: "button"
                               }
                             },
-                            [_vm._v("Termina Orden/Submit Order")]
+                            [_vm._v("Finish Order")]
                           )
                         : _vm._e()
                     ])
@@ -38476,7 +38493,7 @@ var render = function() {
                         "div",
                         { staticClass: "card card-body" },
                         [
-                          _vm._m(2),
+                          _vm._m(3),
                           _vm._v(" "),
                           _c("div", { staticClass: "form-group row" }, [
                             _c(
@@ -38486,7 +38503,7 @@ var render = function() {
                                   "col-md-4 col-form-label text-md-right",
                                 attrs: { for: "name" }
                               },
-                              [_vm._v("You Name/Tu Nombre")]
+                              [_vm._v("Your Name")]
                             ),
                             _vm._v(" "),
                             _c("div", { staticClass: "col-md-6" }, [
@@ -38551,7 +38568,7 @@ var render = function() {
                                   "col-md-4 col-form-label text-md-right",
                                 attrs: { for: "email" }
                               },
-                              [_vm._v("Your Email/Tu Email")]
+                              [_vm._v("Your Email")]
                             ),
                             _vm._v(" "),
                             _c("div", { staticClass: "col-md-6" }, [
@@ -38616,7 +38633,7 @@ var render = function() {
                                   "col-md-4 col-form-label text-md-right",
                                 attrs: { for: "address" }
                               },
-                              [_vm._v("Your Address/Tu Direccion")]
+                              [_vm._v("Your Address")]
                             ),
                             _vm._v(" "),
                             _c("div", { staticClass: "col-md-6" }, [
@@ -38681,7 +38698,7 @@ var render = function() {
                                   "col-md-4 col-form-label text-md-right",
                                 attrs: { for: "phone" }
                               },
-                              [_vm._v("Your Phone/ Tu Telefono")]
+                              [_vm._v("Your Phone")]
                             ),
                             _vm._v(" "),
                             _c("div", { staticClass: "col-md-6" }, [
@@ -38746,7 +38763,7 @@ var render = function() {
                                   "col-md-4 col-form-label text-md-right",
                                 attrs: { for: "notes" }
                               },
-                              [_vm._v("Notas Para Tu Orden")]
+                              [_vm._v("Notes for your order")]
                             ),
                             _vm._v(" "),
                             _c("div", { staticClass: "col-md-6" }, [
@@ -38882,7 +38899,7 @@ var render = function() {
                                   attrs: { type: "button" },
                                   on: { click: _vm.toggleModal }
                                 },
-                                [_vm._v("Continuar/Continue")]
+                                [_vm._v("Continue")]
                               ),
                               _vm._v(" "),
                               _c(
@@ -38894,7 +38911,7 @@ var render = function() {
                                     disabled: _vm.isFinishing
                                   }
                                 },
-                                [_vm._v("Terminar/Finish")]
+                                [_vm._v("Submit")]
                               )
                             ])
                           ])
@@ -38934,19 +38951,78 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "row__catering_cta col-12 my-5 py-5 px-5" },
+      [
+        _c(
+          "h1",
+          {
+            staticClass:
+              "text-center font-color-chocoorange font-family-cursive mb-3"
+          },
+          [_vm._v("Hosting an event?")]
+        ),
+        _vm._v(" "),
+        _c("p", { staticClass: "text-center font-weight-bold" }, [
+          _vm._v(
+            "\n            For special orders and event catering we have a great variety of entrees and appetizers for your events and parties."
+          ),
+          _c("br"),
+          _vm._v(
+            "\n            For more information and comments you can contact us at our "
+          ),
+          _c(
+            "a",
+            {
+              staticClass: "text-decoration-none font-weight-bold",
+              attrs: {
+                href: "mailto:floresemilia@hotmail.com",
+                target: "_blank"
+              }
+            },
+            [_vm._v("Email")]
+          ),
+          _vm._v(" or through the "),
+          _c(
+            "a",
+            {
+              staticClass: "text-decoration-none font-weight-bold",
+              attrs: { href: "tel:7788891245", target: "_blank" }
+            },
+            [_vm._v("Phone")]
+          ),
+          _vm._v(".\n            ")
+        ]),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("p", { staticClass: "text-center font-weight-bold" }, [
+          _vm._v("\n            You can also check us out on "),
+          _c(
+            "a",
+            {
+              staticClass: "font-weight-bold text-decoration-none",
+              attrs: {
+                href: "https://www.facebook.com/Akisito-Noma-1532949476978572",
+                target: "_blank"
+              }
+            },
+            [_vm._v("Facebook!")]
+          )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "text-center" }, [
       _c("p", [
-        _vm._v(
-          'Termina tu orden con el boton "Terminar/Finish" al final o aprete el boton "Continuar/Continue" para seguir modificando tu orden.'
-        )
-      ]),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _c("p", [
-        _vm._v(
-          'Finish your order by pressing the "Terminar/Finish" button at the end or press the "Continuar/Continue" button to continue modifying your order.'
-        )
+        _vm._v('Finish your order by pressing the "'),
+        _vm._v('Submit" button at the end or press the "'),
+        _vm._v('Continue" button to continue modifying your order.')
       ])
     ])
   }

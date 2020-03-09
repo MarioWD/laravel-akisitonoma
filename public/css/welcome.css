@@ -6,6 +6,10 @@ body {
   font-size: 16px;
 }
 
+.font-family-cursive {
+  font-family: "Lobster", cursive;
+}
+
 .font-color-chocoorange {
   color: #FF8400;
 }
@@ -60,7 +64,6 @@ body {
 }
 
 .view__welcome header.row__resto .intro {
-  padding: 50px 0 100px;
   font-size: 25px;
 }
 
@@ -77,37 +80,41 @@ body {
   letter-spacing: 0.2rem;
 }
 
-.view__welcome main.row__menu > div {
+.view__welcome main.row__menu .row__catering_cta {
   background-color: #f5f4db;
-  min-height: 500px;
+  min-height: 100px;
+}
+
+.view__welcome main.row__menu .row__board {
+  background-color: #f5f4db;
   border-radius: 40px;
   padding: 30px 0 40px;
 }
 
-.view__welcome main.row__menu > div .row__menu-header {
+.view__welcome main.row__menu .row__board .row__menu-header {
   text-align: center;
 }
 
-.view__welcome main.row__menu > div .row__menu-header h1 {
+.view__welcome main.row__menu .row__board .row__menu-header h1 {
   font-family: "Lobster", cursive;
   color: #668033;
   font-size: 3em;
 }
 
-.view__welcome main.row__menu > div .row__menu-header p {
+.view__welcome main.row__menu .row__board .row__menu-header p {
   font-weight: bold;
 }
 
-.view__welcome main.row__menu > div .row__item .col__img img {
+.view__welcome main.row__menu .row__board .row__item .col__img img {
   border-radius: 50%;
   border: 10px solid #668033;
 }
 
-.view__welcome main.row__menu > div .row__item .col__info blockquote h1 {
+.view__welcome main.row__menu .row__board .row__item .col__info blockquote h1 {
   font-family: "Lobster", cursive;
 }
 
-.view__welcome main.row__menu > div .row__item .col__info blockquote p {
+.view__welcome main.row__menu .row__board .row__item .col__info blockquote p {
   font-weight: bolder;
 }
 

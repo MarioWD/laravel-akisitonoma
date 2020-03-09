@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterOrdersTable extends Migration
+class AlterMenusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AlterOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::table('orders', function (Blueprint $table) {
+        Schema::table('menus', function (Blueprint $table) {
             //
-            $table->text('notes')->nullable();
+            $table->float('delivery')->nullable()->default(3.00);
         });
     }
 
@@ -26,10 +26,12 @@ class AlterOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::table('orders', function (Blueprint $table) {
+        Schema::table('menus', function (Blueprint $table) {
+            //
             $columnsToDrop = [];
-            if (Schema::hasColumn('orders', 'notes')) $columnsToDrop[] = 'notes';
+            if (Schema::hasColumn('menus', 'delivery')) $columnsToDrop[] = 'delivery';
             $table->dropColumn($columnsToDrop);
+
         });
     }
 }

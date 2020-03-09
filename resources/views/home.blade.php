@@ -10,8 +10,20 @@
 	<tr>
 		<th>{{ $item->name }}</th>
 		<td>{{ $totals['item_quantities'][$item->id] ?? 0}}</td>
+		<td>${{ number_format($totals['item_totals'][$item->id], 2) ?? 0}}</td>
 	</tr>
 	@endforeach
+    <tr>
+        <th>Deliveries:</th>
+        <td>{{ $menu->orders->count() ?? 0 }}</td>
+        <td>${{ number_format($menu->orders->count() * $menu->delivery, 2) ?? 0 }}</td>
+    </tr>
+
+    <tr>
+        <th>Total:</th>
+        <td></td>
+        <td>${{ number_format($totals['total'], 2) ?? 0}}</td>
+    </tr>
 	</tbody>
 </table>
 <div class='row'>
@@ -40,15 +52,16 @@
 						<tr>
 							<th>{{ $item->name }}</th>
 							<td>{{ $item->pivot->quantity }}</td>
-							<td>${{ ($item->pivot->quantity * $item->price) }}</td>
+							<td>${{ number_format($item->pivot->quantity * $item->price, 2) }}</td>
 						</tr>
 						@endforeach
 						<tr>
 							<th>Delivery</th>
 							<th></th>
-							<td>$3.00</td>
+							<td>${{ number_format($menu->delivery, 2) }}</td>
 						</tr>
-						<tr><td></td><td></td><td>${{ ($order->total + 3) }}</td></tr>
+                        <tr><td></td><td></td><td>
+                            ${{ number_format($order->total + $menu->delivery, 2) }}</td></tr>
 						</tbody>
 					</table>
 				</div>
