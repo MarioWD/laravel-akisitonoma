@@ -9,8 +9,8 @@
 	@foreach ($menu->items as $item)
 	<tr>
 		<th>{{ $item->name }}</th>
-		<td>{{ $totals['item_quantities'][$item->id] ?? 0}}</td>
-		<td>${{ number_format($totals['item_totals'][$item->id]?:0, 2) }}</td>
+		<td>{{ $totals['item_quantities'][$item->id] ?? 0 }}</td>
+		<td>${{ number_format(($totals['item_totals'][$item->id] ?? 0), 2) }}</td>
 	</tr>
 	@endforeach
     <tr>
@@ -22,7 +22,7 @@
     <tr>
         <th>Total:</th>
         <td></td>
-        <td>${{ number_format($totals['total']?:0, 2) }}</td>
+        <td>${{ number_format(($totals['total'] ?? 0), 2) }}</td>
     </tr>
 	</tbody>
 </table>
