@@ -3,14 +3,20 @@
 @section('content')
 <h1>Menu Dashboard</h1>
 <h3>El Menu Activo Ahorita con las ordenes echas por el internet</h3>
-@if ($menu)
+@if (!$menus->isEmpty())
+@foreach ($menus->sortBy('end_date') as $menu)
 <table class='table'>
 	<tbody>
+    <tr>
+        <th>Menu: #{{ $menu->id }}</th>
+        <th>{{ date('l, M j', strtotime($menu->start_date)) }}</th>
+        <th>{{ date('l, M j', strtotime($menu->end_date)) }}</th>
+    </tr>
 	@foreach ($menu->items as $item)
 	<tr>
 		<th>{{ $item->name }}</th>
-		<td>{{ $totals['item_quantities'][$item->id] ?? 0 }}</td>
-		<td>${{ number_format(($totals['item_totals'][$item->id] ?? 0), 2) }}</td>
+		<td>{{ $menu->item_order_quantity_total($item) }}</td>
+		<td>${{ number_format($menu->item_order_quantity_total($item) * $item->price, 2) }}</td>
 	</tr>
 	@endforeach
     <tr>
@@ -18,11 +24,10 @@
         <td>{{ $menu->orders->count() ?? 0 }}</td>
         <td>${{ number_format($menu->orders->count() * $menu->delivery, 2) ?? 0 }}</td>
     </tr>
-
     <tr>
         <th>Total:</th>
         <td></td>
-        <td>${{ number_format(($totals['total'] ?? 0), 2) }}</td>
+        <td>${{ number_format($menu->orders_total(), 2) }}</td>
     </tr>
 	</tbody>
 </table>
@@ -78,6 +83,8 @@
 	@endforeach
 </div>
 </div>
+<hr class='mb-5'/>
+@endforeach
 @else
 <div class='jumbotron'>
 	<h1 class='display-4'>No hay menu para la semana</h1>

@@ -23,8 +23,14 @@
 		<link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
     </head>
     <body class='view__welcome' style='background-image: url({{ asset("/assets/chefbg2.jpg") }})'>
-		<div id='app'>
-			<welcome-page-menu :order="{{ json_encode($order) }}" :menu="{{ json_encode($menu) }}" :items="{{ json_encode($menu->items ?? null) }}" />
+		<div id='app' class='container-fluid'>
+            <welcome-page-header :menus='{{ json_encode($menus) }}'></welcome-page-header>
+            <main class='row row__menu'>
+                <welcome-page-catering></welcome-page-catering>
+                @if (!$menus->isEmpty())
+                <welcome-page-menu :menu='{{ json_encode($menus[0]) }}'></welcome-page-menu>
+                @endif
+            </main> 
 		</div>
 		</main>
     </body>

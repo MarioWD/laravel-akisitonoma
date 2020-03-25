@@ -18,7 +18,8 @@ window.Vue = require('vue');
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
+Vue.component('welcome-page-header', require('./components/WelcomeHeader.vue').default);
+Vue.component('welcome-page-catering', require('./components/WelcomeCatering.vue').default);
 Vue.component('welcome-page-menu', require('./components/WelcomeMenu.vue').default);
 
 
@@ -28,6 +29,7 @@ Vue.component('welcome-page-menu', require('./components/WelcomeMenu.vue').defau
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+export const bus = new Vue();
 const app = new Vue({
     el: '#app',
 });
