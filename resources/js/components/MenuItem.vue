@@ -34,5 +34,8 @@
 export default {
     name: 'MenuItem',
     props: ['item', 'i'],
+	mounted () {
+	},
+
 }
 </script>

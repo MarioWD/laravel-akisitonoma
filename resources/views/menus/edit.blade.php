@@ -25,7 +25,7 @@
 			</div>
 		</div>
 		<div class='form-group row'>
-			{{ form::label('start_date', 'cuando termina el menu',
+			{{ form::label('end_date', 'cuando termina el menu',
 				['class' => 'col-md-4 col-form-label text-md-right']) }}
 			<div class='col-md-6'>
 				{{ form::date('end_date', ( old('end_date') ?? $menu->end_date), 
@@ -40,27 +40,65 @@
 
 			</div>
 		</div>
-		@foreach ($items as $item)
+		@foreach ($menu->items as $item)
 		<div class='form-group row'>
 			<div class='col-md-4'>
-				<div class='row d-flex align-items-center'>
-					<div class='col-6'>
-						<img src='{{ "/storage/{$item->image}" }}' class='w-100' />
-					</div>
-					{{ form::label("items[{$item->id}]", $item->name,
-						['class' => 'col-6 col-form-label text-md-right']) }}
-				</div>	
+				<img src='{{ "/storage/{$item->image}" }}' class='w-100' />
 			</div>
-			<div class='col-md-6 d-flex align-items-center'>
-				{{ form::checkbox("items[{$item->id}]", $item->id, $menu->items->contains($item->id),
-				[
-					'class' => "m-0 form-check-input " . ($errors->has('items')?'is-invalid':'')
-				]) }}
-				@error("items")
-					<span class="invalid-feedback ml-3" role="alert">
-						<strong>{{ $message }}</strong>
-					</span>
-				@enderror
+			<div class='col-md-8 pt-5'>
+				<div class='form-check'>
+					{{ 
+						form::checkbox("items[{$item->id}]", $item->id, TRUE,
+						['class' => "form-check-input " . ($errors->has('items')?'is-invalid':'')]) 
+					}}
+					{{ 
+						form::label("items[{$item->id}]", $item->name,
+						['class' => 'form-check-label']) 
+					}}
+				</div>
+				<hr>
+				<div class="form-check">
+					{{ 
+						form::radio("items[{$item->id}][sold_out]", 0, !$item->pivot->sold_out,
+						['class' => "form-check-input", 'id'=>"items[{$item->id}][sold_out][true]"]) 
+					}}
+					{{ 
+						form::label("items[{$item->id}][sold_out][true]", "In Stock",
+						['class' => 'form-check-label']) 
+					}}
+				</div>
+				<div class="form-check">
+					{{ 
+						form::radio("items[{$item->id}][sold_out]", 1, $item->pivot->sold_out,
+						['class' => "form-check-input", 'id' => "items[{$item->id}][sold_out][false]"]) 
+					}}
+					{{ 
+						form::label("items[{$item->id}][sold_out][false]", "Sold Out",
+						['class' => 'form-check-label']) 
+					}}
+				</div>
+			</div>
+		</div>
+		@endforeach
+		@foreach ($items as $item)
+
+		@if ($menu->items->contains($item->id)) @continue @endif
+
+		<div class='form-group row'>
+			<div class='col-md-4'>
+				<img src='{{ "/storage/{$item->image}" }}' class='w-100' />
+			</div>
+			<div class='col-md-8 pt-5'>
+				<div class='form-check'>
+					{{ 
+						form::checkbox("items[{$item->id}]", $item->id, $menu->items->contains($item->id),
+						['class' => "form-check-input " . ($errors->has('items')?'is-invalid':'')]) 
+					}}
+					{{ 
+						form::label("items[{$item->id}]", $item->name,
+						['class' => 'form-check-label']) 
+					}}
+				</div>
 			</div>
 		</div>
 		@endforeach

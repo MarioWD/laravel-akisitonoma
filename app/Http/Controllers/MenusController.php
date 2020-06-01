@@ -96,7 +96,7 @@ class MenusController extends Controller
 				'start_date' => $data['start_date'],
 				'end_date' => $data['end_date'],
 		]);	
-		$menu->items()->sync(array_values($data['items']));
+		$menu->items()->sync($data['items']);
 		return redirect(route('menus.show', $menu->id));
 
     }

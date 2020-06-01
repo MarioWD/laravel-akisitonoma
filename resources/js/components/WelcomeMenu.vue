@@ -13,7 +13,7 @@
                 </div>
             </div>
 
-            <MenuItem v-for="(item, i) in menu.items" :key='item.id' :item="item" :i="i"/>
+            <MenuItem v-for="(item, i) in menu.items" v-if="item.pivot.sold_out != 1" :key='item.id' :item="item" :i="i"/>
 
             <div class='text-center mt-3'>
                 <button v-if='start' class='btn btn-olive' data-target="#order-submit-modal" data-toggle='modal' type='button'>Finish Order</button>

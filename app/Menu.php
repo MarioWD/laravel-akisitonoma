@@ -9,7 +9,7 @@ class Menu extends Model
 	protected $guarded = [];
     //
 	public function items () {
-		return $this->belongsToMany(Item::class);
+		return $this->belongsToMany(Item::class)->withPivot('sold_out');
 	}
 	public function orders () {
 		return $this->hasMany(Order::class);
