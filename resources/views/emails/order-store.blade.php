@@ -16,7 +16,7 @@ Were including a overview of your order below:
 |{{ $item->name }}|{{ $item->pivot->quantity }}|${{ $item->price }}|${{ $item->price * $item->pivot->quantity }}|
 @endforeach
 | Delivery | 1 | $3.00|$3.00|
-| Total | | |{{ $order->total + 3.00 }}|
+| Total | | |{{ $order->total }}|
 @endcomponent
 
 Thank you,<br>
