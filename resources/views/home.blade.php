@@ -66,7 +66,7 @@
 							<td>${{ number_format($menu->delivery, 2) }}</td>
 						</tr>
                         <tr><td></td><td></td><td>
-                            ${{ number_format($order->total + $menu->delivery, 2) }}</td></tr>
+                            ${{ number_format($order->total, 2) }}</td></tr>
 						</tbody>
 					</table>
 				</div>
