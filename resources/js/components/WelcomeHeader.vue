@@ -2,7 +2,7 @@
 <header class='row row__resto'>
     <div class='navbar col-12 sticky-top d-flex align-items-center'>
         <span class='navbar-brand'><img src='/assets/chili.svg' height='50px'/></span>
-        <a class='navbar-right p-2 text-decoration-none text-light' href='#' data-target='#order-submit-modal' data-toggle='modal'><i class='fa fa-shopping-cart'></i> <strong>{{ this.total }}</strong></a>
+		<a class='navbar-right p-2 text-decoration-none text-light' href='#' data-target='#order-submit-modal' data-toggle='modal'><i class='fa fa-shopping-cart'></i> <strong>{{ this.total }}</strong></a>
     </div>
     <div class='col-12 text-center intro mt-5'>
         <h1><span class='font-color-beige'>A Comerrr!</span> Akisito No'ma</h1>

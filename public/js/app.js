@@ -2075,6 +2075,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'WelcomeCatering'
@@ -39183,6 +39186,14 @@ var staticRenderFns = [
           _vm._v(".\n    ")
         ]),
         _vm._v(" "),
+        _c("div", { staticClass: "d-flex justify-content-center" }, [
+          _c(
+            "a",
+            { staticClass: "btn btn-olive", attrs: { href: "/catalog" } },
+            [_vm._v("Catering Menu")]
+          )
+        ]),
+        _vm._v(" "),
         _c("hr"),
         _vm._v(" "),
         _c("p", { staticClass: "text-center font-weight-bold" }, [
@@ -52106,9 +52117,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/marioflores/akisi/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Users/marioflores/akisi/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /Users/marioflores/akisi/resources/sass/welcome.scss */"./resources/sass/welcome.scss");
+__webpack_require__(/*! /Volumes/Magento/personal/akisi/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Volumes/Magento/personal/akisi/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /Volumes/Magento/personal/akisi/resources/sass/welcome.scss */"./resources/sass/welcome.scss");
 
 
 /***/ })
