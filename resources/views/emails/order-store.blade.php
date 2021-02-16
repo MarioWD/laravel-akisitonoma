@@ -11,11 +11,11 @@ We greately appreciate your patience, our deliveries start this {{ date( 'l F \t
 Were including a overview of your order below:
 @component('mail::table')
 | Comida/Food     | Cuanto/Amount              | Precio/Price       | Total |
-| :--------------- |:--------------------------:|:-----------------:| -----: | 
+| :--------------- |:--------------------------:|:-----------------:| -----: |
 @foreach ($order->items as $item)
 |{{ $item->name }}|{{ $item->pivot->quantity }}|${{ $item->price }}|${{ $item->price * $item->pivot->quantity }}|
 @endforeach
-| Delivery | 1 | $3.00|$3.00|
+| Delivery | 1 | ${{$order->menu->delivery}}| ${{$order->menu->delivery}} |
 | Total | | |{{ $order->total }}|
 @endcomponent
 

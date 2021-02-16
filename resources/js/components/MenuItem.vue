@@ -13,14 +13,14 @@
                     <div class='mt-3' v-if='$parent.start'>
                         <button v-if="!$parent.itemExists(item)" class='btn btn-orange' @click="$parent.addItem(item)">Add</button>
                         <div v-if="$parent.itemExists(item)" class='d-flex' :class="{'justify-content-md-end': ((i+1)%2==0)}">
-                            <input class='form-control' readonly 
-                            :style="{width: '80px'}" min='0' 
+                            <input class='form-control' readonly
+                            :style="{width: '80px'}" min='0'
                             step='1' type='number' :value="$parent.getItemAmount(item)"/>
-                            <button class='btn btn-success ml-3' 
+                            <button class='btn btn-success ml-3'
                             @click="$parent.addItem(item)">
                             <i class='fa fa-plus'></i>
                             </button>
-                            <button class='btn btn-danger ml-3' 
+                            <button class='btn btn-danger ml-3'
                             @click="$parent.removeItem(item)">
                             <i class='fa fa-minus'></i>
                             </button>
@@ -34,8 +34,6 @@
 export default {
     name: 'MenuItem',
     props: ['item', 'i'],
-	mounted () {
-	},
-
+	mounted () {},
 }
 </script>
