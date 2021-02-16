@@ -7,7 +7,7 @@ use App\Item;
 use App\Menu;
 use Illuminate\Http\Request;
 use \App\Mail\OrderMailer;
-use Illuminate\Support\Facades\Mail; 
+use Illuminate\Support\Facades\Mail;
 
 class OrdersController extends Controller
 {
@@ -28,7 +28,7 @@ class OrdersController extends Controller
 		$itemIds = [];
 		foreach ($request->items as $id => $qunty) {
 			if (!$qunty) continue;
-			$item_orders[$id] = ['quantity' => $qunty];	
+			$item_orders[$id] = ['quantity' => $qunty];
 			$itemIds[] = $id;
 		}
 		$sum = $request->total;
@@ -57,8 +57,8 @@ class OrdersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() { 
-		$now = date('Y-m-d', strtotime('today'));	
+    public function create() {
+		$now = date('Y-m-d', strtotime('today'));
 		$menu = Menu::where('start_date', '<=', $now)
 			->where('end_date', '>=', $now)
 			->first();
@@ -73,7 +73,7 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-		$now = date('Y-m-d', strtotime('today'));	
+		$now = date('Y-m-d', strtotime('today'));
 		$menu = Menu::where('start_date', '<=', $now)
 			->where('end_date', '>=', $now)
 			->first();
@@ -94,7 +94,6 @@ class OrdersController extends Controller
 		$order->items()->sync($item_ids);
 		Mail::to($order->email)->send(new OrderMailer($order));
 		return redirect(route('orders.show', $order->id));
-        //
     }
 
     /**

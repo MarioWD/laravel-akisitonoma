@@ -4,6 +4,7 @@
 	<div class='jumbotron col-12'>
 		<h1 class='display-4'>Menu numero #{{ $menu->id }}</h1>
 		<p>Empieza {{ date('l F j, Y', strtotime($menu->start_date)) }}, y termina {{ date('l F j, Y', strtotime($menu->end_date)) }}</p>
+        <p>Precio De Delivery Designado: <b>${{$menu->delivery}}</b></p>
 		<div class='d-flex align-items-baseline mt-3'>
 			<a href='{{ route('menus.edit', $menu->id) }}' class='btn btn-primary'>Editar Menu</a>
 			{{ Form::model($menu, ['action' => ['MenusController@destroy', $menu->id], 'class' => 'ml-3']) }}

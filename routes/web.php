@@ -20,4 +20,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/items', 'ItemsController');
 Route::resource('/menus', 'MenusController');
 Route::resource('/orders', 'OrdersController')->middleware('auth');
+Route::get('/catalog', 'CatalogController@index');
 Route::post('/api/order', 'OrdersController@sessionOrderPut')->name('api.order');

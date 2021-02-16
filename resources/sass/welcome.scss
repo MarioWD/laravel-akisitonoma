@@ -53,26 +53,24 @@ color: $darkolivegreen;
 
 	}
 
+    .row__header-intro {
+        font-size: 25px;
+        h1 {
+            font-family: $font-family-cursive;
+            color: $chocolateorange;
+            font-weight: bolder;
+            font-size: 3.25em;
+        }
+        p {
+            font-family: $font-family-cursive;
+            color: $beige;
+            letter-spacing: 0.2rem;
+        }
+    }
 	header.row__resto {
 		.navbar {
 			.navbar-brand {
 				margin-bottom: 0;
-			}
-			.navbar-right {
-			}
-		}
-		.intro {
-			font-size: 25px;
-			h1 {
-				font-family: $font-family-cursive; 
-				color: $chocolateorange;
-				font-weight: bolder;
-				font-size: 3.25em;
-			}
-			p {
-				font-family: $font-family-cursive;
-				color: $beige;
-				letter-spacing: 0.2rem;
 			}
 		}
 	}
@@ -97,7 +95,7 @@ color: $darkolivegreen;
 					   	font-weight: bold;
 					}
 				}
-				 .row__item {
+                .row__item {
 					 .col__img {
 						 img {
 						 	border-radius: 50%;

@@ -6,15 +6,14 @@
                 <div class='col-12'>
                     <h1 class='mb-2'>The Menu for the week!</h1>
                     <p>Clicking the button will add the item to your order</p>
+                    <p>Remember that we can only fulfill orders within the Greater Vancouver BC Area, and we ask that orders placed must be above $25 in value. Thank You!</p>
                     <hr/>
                     <div style='min-height:50px;'>
                     <button v-if='!start' class='btn btn-olive' @click='startForm'>Start</button>
                     </div>
                 </div>
             </div>
-
             <MenuItem v-for="(item, i) in menu.items" v-if="item.pivot.sold_out != 1" :key='item.id' :item="item" :i="i"/>
-
             <div class='text-center mt-3'>
                 <button v-if='start' class='btn btn-olive' data-target="#order-submit-modal" data-toggle='modal' type='button'>Finish Order</button>
             </div>
@@ -93,7 +92,7 @@ export default {
             return this.items.filter(el => item.id == el.id).length;
         },
         getItemSum (item) {
-            return parseFloat(this.getItemAmount(item)*item.price).toFixed(2); 
+            return parseFloat(this.getItemAmount(item)*item.price).toFixed(2);
         },
         getOrderSum () {
             let itemSum = this.items.reduce((sum, el) => parseFloat(sum)+parseFloat(el.price), 0);
@@ -103,12 +102,12 @@ export default {
         packageOrder () {
             let items = {};
             this.getUniqueItems().map((v, i) => {
-                items[`${v.id}`] = this.getItemAmount(v); 
+                items[`${v.id}`] = this.getItemAmount(v);
             });
             return {
                 name: this.name,
-                email: this.email, 
-                phone: this.phone, 
+                email: this.email,
+                phone: this.phone,
                 notes: this.notes,
                 address: this.address,
                 menu_id: this.menu.id,
