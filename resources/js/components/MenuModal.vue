@@ -85,10 +85,5 @@
 			</div>
 	  	</div>
   	</div>
-
 </template>
-<script>
-export default {
-    name: 'MenuModal',
-}
-</script>
+<script>export default { name: 'MenuModal'}</script>
