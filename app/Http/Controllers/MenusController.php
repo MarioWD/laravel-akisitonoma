@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class MenusController extends Controller
 {
+    const RULES = [
+        'start_date' => ['required','date'],
+        'end_date' => ['required', 'date', 'after_or_equal:start_date'],
+        'items' => ['required', 'array'],
+        'items.*' => ['required', 'distinct', 'min:1'],
+        'delivery' => ['integer']
+    ];
+
 	public function __construct () { $this->middleware('auth'); }
 
     /**
@@ -39,18 +47,11 @@ class MenusController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        //
-		$data = $request->validate([
-			'start_date' => ['required','date'],
-			'end_date' => ['required', 'date', 'after_or_equal:start_date'],
-			'items' => ['required', 'array'],
-			'items.*' => ['required', 'distinct', 'min:1'],
-		]);
-		$menu = Menu::create([
-				'start_date' => $data['start_date'],
-				'end_date' => $data['end_date'],
-		]);	
-		$menu->items()->sync(array_values($data['items']));
+		$data = $request->validate(self::RULES);
+		$items = $data['items'];
+		unset($data['items']);
+		$menu = Menu::create($data);
+		$menu->items()->sync(array_values($items));
 		return redirect(route('menus.show', $menu->id));
     }
 
@@ -71,7 +72,6 @@ class MenusController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Menu $menu) {
-        //
 		$items = \App\Item::all();
 		return view('menus.edit', compact('menu', 'items'));
     }
@@ -83,22 +83,13 @@ class MenusController extends Controller
      * @param  \App\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Menu $menu)
-    {
-        //
-		$data = $request->validate([
-			'start_date' => ['required','date'],
-			'end_date' => ['required', 'date', 'after_or_equal:start_date'],
-			'items' => ['required', 'array'],
-			'items.*' => ['required', 'distinct', 'min:1'],
-		]);
-		$menu->update([
-				'start_date' => $data['start_date'],
-				'end_date' => $data['end_date'],
-		]);	
-		$menu->items()->sync($data['items']);
+    public function update(Request $request, Menu $menu) {
+		$data = $request->validate(self::RULES);
+        $items = $data['items'];
+        unset($data['items']);
+		$menu->update($data);
+		$menu->items()->sync($items);
 		return redirect(route('menus.show', $menu->id));
-
     }
 
     /**
@@ -107,9 +98,7 @@ class MenusController extends Controller
      * @param  \App\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Menu $menu)
-    {
-        //
+    public function destroy(Menu $menu) {
 		$menu->delete();
 		return redirect(route('menus.index'));
     }
