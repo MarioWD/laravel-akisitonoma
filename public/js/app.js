@@ -2125,29 +2125,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'WelcomeCatering'
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/WelcomeHeader.vue?vue&type=script&lang=js&":
-/*!************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/WelcomeHeader.vue?vue&type=script&lang=js& ***!
-  \************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./resources/js/app.js");
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2163,7 +2140,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'WelcomeHeader',
+  name: 'WelcomeCatering',
   props: ['menus'],
   data: function data() {
     return {
@@ -2200,6 +2177,35 @@ __webpack_require__.r(__webpack_exports__);
     this.keys = Object.keys(this.menus);
     this.menu = this.menus[0];
   }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/WelcomeHeader.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/WelcomeHeader.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./resources/js/app.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'WelcomeHeader'
 });
 
 /***/ }),
@@ -39230,9 +39236,60 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "row__header-intro col-12 text-center mt-5" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v("Comida autenticamente Peruana y Mexicana, directo a su hogar!")
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "d-flex justify-content-around px-5",
+          attrs: { if: _vm.menus }
+        },
+        _vm._l(_vm.menus, function(menu, i) {
+          return _c(
+            "a",
+            {
+              directives: [
+                { name: "smooth-scroll", rawName: "v-smooth-scroll" }
+              ],
+              key: i,
+              staticClass: "btn btn-orange btn-lg",
+              attrs: { href: "#menu-order" },
+              on: {
+                click: function($event) {
+                  return _vm.changeMenu(i)
+                }
+              }
+            },
+            [
+              _c("strong", [
+                _vm._v("Order for " + _vm._s(_vm.getProperDate(menu.end_date)))
+              ])
+            ]
+          )
+        }),
+        0
+      )
+    ]),
+    _vm._v(" "),
+    _vm._m(1)
+  ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h1", [
+      _c("span", { staticClass: "font-color-beige" }, [_vm._v("A Comerrr!")]),
+      _vm._v(" Akisito No'ma")
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -39252,11 +39309,11 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("p", { staticClass: "text-center font-weight-bold" }, [
           _vm._v(
-            "\n        For special orders and event catering we have a great variety of entrees and appetizers for your events and parties."
+            "\n            For special orders and event catering we have a great variety of entrees and appetizers for your events and parties."
           ),
           _c("br"),
           _vm._v(
-            "\n        For more information and comments you can contact us at our "
+            "\n            For more information and comments you can contact us at our "
           ),
           _c(
             "a",
@@ -39278,7 +39335,7 @@ var staticRenderFns = [
             },
             [_vm._v("Phone")]
           ),
-          _vm._v(".\n    ")
+          _vm._v(".\n        ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "d-flex justify-content-center" }, [
@@ -39294,7 +39351,7 @@ var staticRenderFns = [
         _c("p"),
         _vm._v(" "),
         _c("p", { staticClass: "text-center font-weight-bold" }, [
-          _vm._v("\n    You can also check us out on "),
+          _vm._v("\n        You can also check us out on "),
           _c(
             "a",
             {
@@ -39339,64 +39396,35 @@ var render = function() {
       [
         _vm._m(0),
         _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "navbar-right p-2 text-decoration-none text-light",
-            attrs: {
-              href: "#",
-              "data-target": "#order-submit-modal",
-              "data-toggle": "modal"
-            }
-          },
-          [
-            _c("i", { staticClass: "fa fa-shopping-cart" }),
-            _vm._v(" "),
-            _c("strong", [_vm._v(_vm._s(this.total))])
-          ]
-        )
-      ]
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "col-12 text-center intro mt-5" }, [
-      _vm._m(1),
-      _vm._v(" "),
-      _c("p", [
-        _vm._v("Comida autenticamente Peruana y Mexicana, directo a su hogar!")
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "d-flex justify-content-around px-5",
-          attrs: { if: _vm.menus }
-        },
-        _vm._l(_vm.menus, function(menu, i) {
-          return _c(
+        _c("div", { staticClass: "navbar-right text-light" }, [
+          _c(
             "a",
             {
-              directives: [
-                { name: "smooth-scroll", rawName: "v-smooth-scroll" }
-              ],
-              key: i,
-              staticClass: "btn btn-orange btn-lg",
-              attrs: { href: "#menu-order" },
-              on: {
-                click: function($event) {
-                  return _vm.changeMenu(i)
-                }
+              staticClass: "p-2 text-decoration-none text-light",
+              attrs: { href: "/catalog" }
+            },
+            [_vm._v("Catering")]
+          ),
+          _vm._v("\n            |\n            "),
+          _c(
+            "a",
+            {
+              staticClass: "p-2 text-decoration-none text-light",
+              attrs: {
+                href: "#",
+                "data-target": "#order-submit-modal",
+                "data-toggle": "modal"
               }
             },
             [
-              _c("strong", [
-                _vm._v("Order for " + _vm._s(_vm.getProperDate(menu.end_date)))
-              ])
+              _c("i", { staticClass: "fa fa-shopping-cart" }),
+              _vm._v(" "),
+              _c("strong", [_vm._v(_vm._s(this.total))])
             ]
           )
-        }),
-        0
-      )
-    ])
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -39404,17 +39432,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "navbar-brand" }, [
+    return _c("a", { staticClass: "navbar-brand", attrs: { href: "/" } }, [
       _c("img", { attrs: { src: "/assets/chili.svg", height: "50px" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h1", [
-      _c("span", { staticClass: "font-color-beige" }, [_vm._v("A Comerrr!")]),
-      _vm._v(" Akisito No'ma")
     ])
   }
 ]

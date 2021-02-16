@@ -12,7 +12,8 @@ class ItemsController extends Controller
         'name' => 'required',
         'description' => '',
         'image' => 'required',
-        'price' => 'required'
+        'price' => 'required',
+        'for_catering' => 'boolean'
     ];
 
 	public function __construct () { $this->middleware('auth'); }
@@ -41,6 +42,7 @@ class ItemsController extends Controller
     public function store(Request $request)
     {
         try {
+            $request->merge(['for_catering' => ($request->get('for_catering') === 'on'? 1 : 0)]);
             $data = $request->validate(self::RULES);
             $image_path = $request->image->store('uploads', 'public');
             $image = Image::make(public_path("storage/{$image_path}"))->fit(1000,1000);
@@ -84,14 +86,14 @@ class ItemsController extends Controller
      */
     public function update(Request $request, Item $item)
     {
+        $request->merge(['for_catering' => ($request->get('for_catering') === 'on'? 1 : 0)]);
 		$data = $request->validate(self::RULES);
 		if ($request->image) {
 			$image_path = $request->image->store('uploads', 'public');
 			$image = Image::make(public_path("storage/{$image_path}"))->fit(1000,1000);
 			$image->save();
 			$data['image'] = $image_path;
-		}
-		else {
+		} else {
 			unset($data['image']);
 		}
 		$item->update($data);

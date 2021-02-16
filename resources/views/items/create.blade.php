@@ -43,6 +43,15 @@
 							@enderror
 						</div>
 					</div>
+                    <div class="form-group row">
+                        <label for="for_catering" class="col-md-4 col-form-label form-check-label text-md-right">{{ __('Si deberia aparecer en Catering') }}</label>
+                        <div class="col-md-6">
+                            <input id="for_catering" type="checkbox" class="form-check @error('for_catering') is-invalid @enderror" name="for_catering" autocomplete="for_catering" value='{{ old('for_catering') }}'>
+                            @error('for_catering')
+                            <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                            @enderror
+                        </div>
+                    </div>
 					<div class="form-group row mb-0">
 						<div class="col-md-6 offset-md-4">
 							<button type="submit" class="btn btn-primary">{{ __('Guardar') }}</button>

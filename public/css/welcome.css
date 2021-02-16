@@ -59,25 +59,25 @@ body {
   text-transform: uppercase;
 }
 
-.view__welcome header.row__resto .navbar .navbar-brand {
-  margin-bottom: 0;
-}
-
-.view__welcome header.row__resto .intro {
+.view__welcome .row__header-intro {
   font-size: 25px;
 }
 
-.view__welcome header.row__resto .intro h1 {
+.view__welcome .row__header-intro h1 {
   font-family: "Lobster", cursive;
   color: #FF8400;
   font-weight: bolder;
   font-size: 3.25em;
 }
 
-.view__welcome header.row__resto .intro p {
+.view__welcome .row__header-intro p {
   font-family: "Lobster", cursive;
   color: #f5f4db;
   letter-spacing: 0.2rem;
+}
+
+.view__welcome header.row__resto .navbar .navbar-brand {
+  margin-bottom: 0;
 }
 
 .view__welcome main.row__menu .row__catering_cta {
