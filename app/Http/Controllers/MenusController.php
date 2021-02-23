@@ -12,7 +12,7 @@ class MenusController extends Controller
         'end_date' => ['required', 'date', 'after_or_equal:start_date'],
         'items' => ['required', 'array'],
         'items.*' => ['required', 'distinct', 'min:1'],
-        'delivery' => ['integer']
+        'delivery' => []
     ];
 
 	public function __construct () { $this->middleware('auth'); }
